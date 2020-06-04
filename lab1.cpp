@@ -8,56 +8,56 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 TCHAR WinName[] = _T("MainFrame");
 
-int WINAPI _tWinMain(HINSTANCE This,		 // Дескриптор текущего приложения 
-	HINSTANCE Prev, 	// В современных системах всегда 0 
-	LPTSTR cmd, 		// Командная строка 
-	int mode) 		// Режим отображения окна
+int WINAPI _tWinMain(HINSTANCE This,		 // Р”РµСЃРєСЂРёРїС‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ 
+	HINSTANCE Prev, 	// Р’ СЃРѕРІСЂРµРјРµРЅРЅС‹С… СЃРёСЃС‚РµРјР°С… РІСЃРµРіРґР° 0 
+	LPTSTR cmd, 		// РљРѕРјР°РЅРґРЅР°СЏ СЃС‚СЂРѕРєР° 
+	int mode) 		// Р РµР¶РёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РѕРєРЅР°
 {
-	HWND hWnd;		// Дескриптор главного окна программы 
-	MSG msg; 		// Структура для хранения сообщения 
-	WNDCLASS wc; 	// Класс окна
-	// Определение класса окна 
+	HWND hWnd;		// Р”РµСЃРєСЂРёРїС‚РѕСЂ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° РїСЂРѕРіСЂР°РјРјС‹ 
+	MSG msg; 		// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ 
+	WNDCLASS wc; 	// РљР»Р°СЃСЃ РѕРєРЅР°
+	// РћРїСЂРµРґРµР»РµРЅРёРµ РєР»Р°СЃСЃР° РѕРєРЅР° 
 	wc.hInstance = This;
-	wc.lpszClassName = WinName; 				// Имя класса окна 
-	wc.lpfnWndProc = WndProc; 					// Функция окна 
-	wc.style = CS_HREDRAW | CS_VREDRAW; 			// Стиль окна 
-	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION); 		// Стандартная иконка 
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW); 		// Стандартный курсор 
-	wc.lpszMenuName = NULL; 					// Нет меню 
-	wc.cbClsExtra = 0; 						// Нет дополнительных данных класса 
-	wc.cbWndExtra = 0; 						// Нет дополнительных данных окна 
-	wc.hbrBackground = CreateSolidBrush(RGB(200, 200, 200)); 	// Заполнение окна белым цветом
+	wc.lpszClassName = WinName; 				// РРјСЏ РєР»Р°СЃСЃР° РѕРєРЅР° 
+	wc.lpfnWndProc = WndProc; 					// Р¤СѓРЅРєС†РёСЏ РѕРєРЅР° 
+	wc.style = CS_HREDRAW | CS_VREDRAW; 			// РЎС‚РёР»СЊ РѕРєРЅР° 
+	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION); 		// РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РёРєРѕРЅРєР° 
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW); 		// РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєСѓСЂСЃРѕСЂ 
+	wc.lpszMenuName = NULL; 					// РќРµС‚ РјРµРЅСЋ 
+	wc.cbClsExtra = 0; 						// РќРµС‚ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С… РєР»Р°СЃСЃР° 
+	wc.cbWndExtra = 0; 						// РќРµС‚ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С… РѕРєРЅР° 
+	wc.hbrBackground = CreateSolidBrush(RGB(200, 200, 200)); 	// Р—Р°РїРѕР»РЅРµРЅРёРµ РѕРєРЅР° Р±РµР»С‹Рј С†РІРµС‚РѕРј
 
 
-	// Регистрация класса окна
+	// Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»Р°СЃСЃР° РѕРєРЅР°
 	if (!RegisterClass(&wc)) return 0;
 
-	// Создание окна 
-	hWnd = CreateWindow(WinName,			// Имя класса окна 
-		_T("Светофор"), 		// Заголовок окна 
-		WS_OVERLAPPEDWINDOW, 		// Стиль окна 
+	// РЎРѕР·РґР°РЅРёРµ РѕРєРЅР° 
+	hWnd = CreateWindow(WinName,			// РРјСЏ РєР»Р°СЃСЃР° РѕРєРЅР° 
+		_T("РЎРІРµС‚РѕС„РѕСЂ"), 		// Р—Р°РіРѕР»РѕРІРѕРє РѕРєРЅР° 
+		WS_OVERLAPPEDWINDOW, 		// РЎС‚РёР»СЊ РѕРєРЅР° 
 		CW_USEDEFAULT,				// x 
-		CW_USEDEFAULT, 				// y	 Размеры окна 
+		CW_USEDEFAULT, 				// y	 Р Р°Р·РјРµСЂС‹ РѕРєРЅР° 
 		CW_USEDEFAULT, 				// width 
 		CW_USEDEFAULT, 				// Height 
-		HWND_DESKTOP, 				// Дескриптор родительского окна 
-		NULL, 						// Нет меню 
-		This, 						// Дескриптор приложения 
-		NULL); 					// Дополнительной информации нет 
+		HWND_DESKTOP, 				// Р”РµСЃРєСЂРёРїС‚РѕСЂ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РѕРєРЅР° 
+		NULL, 						// РќРµС‚ РјРµРЅСЋ 
+		This, 						// Р”РµСЃРєСЂРёРїС‚РѕСЂ РїСЂРёР»РѕР¶РµРЅРёСЏ 
+		NULL); 					// Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РЅРµС‚ 
 
-	ShowWindow(hWnd, mode); 				// Показать окно
+	ShowWindow(hWnd, mode); 				// РџРѕРєР°Р·Р°С‚СЊ РѕРєРЅРѕ
 
-	// Цикл обработки сообщений 
+	// Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё СЃРѕРѕР±С‰РµРЅРёР№ 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
-		TranslateMessage(&msg); 		// Функция трансляции кодов нажатой клавиши 
-		DispatchMessage(&msg); 		// Посылает сообщение функции WndProc() 
+		TranslateMessage(&msg); 		// Р¤СѓРЅРєС†РёСЏ С‚СЂР°РЅСЃР»СЏС†РёРё РєРѕРґРѕРІ РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё 
+		DispatchMessage(&msg); 		// РџРѕСЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ С„СѓРЅРєС†РёРё WndProc() 
 	}
 	return 0;
 }
 
-// Оконная функция вызывается операционной системой
-// и получает сообщения из очереди для данного приложения
+// РћРєРѕРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚СЃСЏ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјРѕР№
+// Рё РїРѕР»СѓС‡Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РёР· РѕС‡РµСЂРµРґРё РґР»СЏ РґР°РЅРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
@@ -66,7 +66,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	HDC hDC = ::GetDC(hWnd);
 	static int x = 0;
 
-	switch (message)		 // Обработчик сообщений
+	switch (message)		 // РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕРѕР±С‰РµРЅРёР№
 	{
 		//break;
 	//a3:
@@ -204,8 +204,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_DESTROY:
 	{
 		PostQuitMessage(0);
-		break; 			// Завершение программы 
-	default: 			// Обработка сообщения по умолчанию 
+		break; 			// Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ 
+	default: 			// РћР±СЂР°Р±РѕС‚РєР° СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	}
