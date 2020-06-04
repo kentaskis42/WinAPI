@@ -14,53 +14,53 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 TCHAR WinName[] = _T("MainFrame");
 
-int WINAPI _tWinMain(HINSTANCE This,		 // Дескриптор текущего приложения 
-	HINSTANCE Prev, 	// В современных системах всегда 0 
-	LPTSTR cmd, 		// Командная строка 
-	int mode) 		// Режим отображения окна
+int WINAPI _tWinMain(HINSTANCE This,		 // Г„ГҐГ±ГЄГ°ГЁГЇГІГ®Г° ГІГҐГЄГіГ№ГҐГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї 
+	HINSTANCE Prev, 	// Г‚ Г±Г®ГўГ°ГҐГ¬ГҐГ­Г­Г»Гµ Г±ГЁГ±ГІГҐГ¬Г Гµ ГўГ±ГҐГЈГ¤Г  0 
+	LPTSTR cmd, 		// ГЉГ®Г¬Г Г­Г¤Г­Г Гї Г±ГІГ°Г®ГЄГ  
+	int mode) 		// ГђГҐГ¦ГЁГ¬ Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г®ГЄГ­Г 
 {
-	HWND hWnd;		// Дескриптор главного окна программы 
-	MSG msg; 		// Структура для хранения сообщения 
-	WNDCLASS wc; 	// Класс окна
-	// Определение класса окна 
+	HWND hWnd;		// Г„ГҐГ±ГЄГ°ГЁГЇГІГ®Г° ГЈГ«Г ГўГ­Г®ГЈГ® Г®ГЄГ­Г  ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» 
+	MSG msg; 		// Г‘ГІГ°ГіГЄГІГіГ°Г  Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГї Г±Г®Г®ГЎГ№ГҐГ­ГЁГї 
+	WNDCLASS wc; 	// ГЉГ«Г Г±Г± Г®ГЄГ­Г 
+	// ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЄГ«Г Г±Г±Г  Г®ГЄГ­Г  
 	wc.hInstance = This;
-	wc.lpszClassName = WinName; 				// Имя класса окна 
-	wc.lpfnWndProc = WndProc; 					// Функция окна 
-	wc.style = CS_HREDRAW | CS_VREDRAW; 			// Стиль окна 
-	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION); 		// Стандартная иконка 
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW); 		// Стандартный курсор 
-	wc.lpszMenuName = NULL; 					// Нет меню 
-	wc.cbClsExtra = 0; 						// Нет дополнительных данных класса 
-	wc.cbWndExtra = 0; 						// Нет дополнительных данных окна 
-	wc.hbrBackground = CreateSolidBrush(RGB(255, 255, 255)); 	// Заполнение окна белым цветом
+	wc.lpszClassName = WinName; 				// Г€Г¬Гї ГЄГ«Г Г±Г±Г  Г®ГЄГ­Г  
+	wc.lpfnWndProc = WndProc; 					// Г”ГіГ­ГЄГ¶ГЁГї Г®ГЄГ­Г  
+	wc.style = CS_HREDRAW | CS_VREDRAW; 			// Г‘ГІГЁГ«Гј Г®ГЄГ­Г  
+	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION); 		// Г‘ГІГ Г­Г¤Г Г°ГІГ­Г Гї ГЁГЄГ®Г­ГЄГ  
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW); 		// Г‘ГІГ Г­Г¤Г Г°ГІГ­Г»Г© ГЄГіГ°Г±Г®Г° 
+	wc.lpszMenuName = NULL; 					// ГЌГҐГІ Г¬ГҐГ­Гѕ 
+	wc.cbClsExtra = 0; 						// ГЌГҐГІ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»Гµ Г¤Г Г­Г­Г»Гµ ГЄГ«Г Г±Г±Г  
+	wc.cbWndExtra = 0; 						// ГЌГҐГІ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»Гµ Г¤Г Г­Г­Г»Гµ Г®ГЄГ­Г  
+	wc.hbrBackground = CreateSolidBrush(RGB(255, 255, 255)); 	// Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г®ГЄГ­Г  ГЎГҐГ«Г»Г¬ Г¶ГўГҐГІГ®Г¬
 
 
-	// Регистрация класса окна
+	// ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї ГЄГ«Г Г±Г±Г  Г®ГЄГ­Г 
 	if (!RegisterClass(&wc)) return 0;
 
-	// Создание окна 
-	hWnd = CreateWindow(WinName,			// Имя класса окна 
-		_T("Дз"), 		// Заголовок окна 
-		WS_OVERLAPPEDWINDOW, 		// Стиль окна 
+	// Г‘Г®Г§Г¤Г Г­ГЁГҐ Г®ГЄГ­Г  
+	hWnd = CreateWindow(WinName,			// Г€Г¬Гї ГЄГ«Г Г±Г±Г  Г®ГЄГ­Г  
+		_T("Г„Г§"), 		// Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ Г®ГЄГ­Г  
+		WS_OVERLAPPEDWINDOW, 		// Г‘ГІГЁГ«Гј Г®ГЄГ­Г  
 		CW_USEDEFAULT,				// x 
-		CW_USEDEFAULT, 				// y	 Размеры окна 
+		CW_USEDEFAULT, 				// y	 ГђГ Г§Г¬ГҐГ°Г» Г®ГЄГ­Г  
 		500, 				// width 
 		500, 				// Height 
-		HWND_DESKTOP, 				// Дескриптор родительского окна 
-		NULL, 						// Нет меню 
-		This, 						// Дескриптор приложения 
-		NULL); 					// Дополнительной информации нет 
+		HWND_DESKTOP, 				// Г„ГҐГ±ГЄГ°ГЁГЇГІГ®Г° Г°Г®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГЈГ® Г®ГЄГ­Г  
+		NULL, 						// ГЌГҐГІ Г¬ГҐГ­Гѕ 
+		This, 						// Г„ГҐГ±ГЄГ°ГЁГЇГІГ®Г° ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї 
+		NULL); 					// Г„Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г®Г© ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГЁ Г­ГҐГІ 
 
-	ShowWindow(hWnd, mode); 				// Показать окно
+	ShowWindow(hWnd, mode); 				// ГЏГ®ГЄГ Г§Г ГІГј Г®ГЄГ­Г®
 	SetTimer(hWnd, 1, USER_TIMER_MINIMUM, NULL);
-	// Цикл обработки сообщений 
+	// Г–ГЁГЄГ« Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© 
 
 
 	HMENU MainMenu = CreateMenu();
 	HMENU hPopupMenu = CreatePopupMenu();
-	AppendMenu(MainMenu, MF_STRING | MF_POPUP, (UINT)hPopupMenu, L"&Кнопка");
+	AppendMenu(MainMenu, MF_STRING | MF_POPUP, (UINT)hPopupMenu, L"&ГЉГ­Г®ГЇГЄГ ");
 	{
-		AppendMenu(hPopupMenu, MF_STRING, 1001, L"Кнопка");
+		AppendMenu(hPopupMenu, MF_STRING, 1001, L"ГЉГ­Г®ГЇГЄГ ");
 
 	}
 
@@ -69,8 +69,8 @@ int WINAPI _tWinMain(HINSTANCE This,		 // Дескриптор текущего приложения
 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
-		TranslateMessage(&msg); 		// Функция трансляции кодов нажатой клавиши 
-		DispatchMessage(&msg); 		// Посылает сообщение функции WndProc() 
+		TranslateMessage(&msg); 		// Г”ГіГ­ГЄГ¶ГЁГї ГІГ°Г Г­Г±Г«ГїГ¶ГЁГЁ ГЄГ®Г¤Г®Гў Г­Г Г¦Г ГІГ®Г© ГЄГ«Г ГўГЁГёГЁ 
+		DispatchMessage(&msg); 		// ГЏГ®Г±Г»Г«Г ГҐГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ WndProc() 
 	}
 	return 0;
 }
@@ -83,11 +83,11 @@ int Calc(HDC dc, int W, int H, double Ph)
 {
 	double NUM = 0;
 
-	HPEN hPen; //Объявляется кисть
+	HPEN hPen; //ГЋГЎГєГїГўГ«ГїГҐГІГ±Гї ГЄГЁГ±ГІГј
 
 
 	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
-	//CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Создаётся объект
+	//CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Г‘Г®Г§Г¤Г ВёГІГ±Гї Г®ГЎГєГҐГЄГІ
 	SelectObject(dc, hPen);
 
 	for (int x = -100; x < 100; x++)
@@ -103,7 +103,7 @@ int Calc(HDC dc, int W, int H, double Ph)
 	//DeleteObject((HGDIOBJ)(HPEN)(hPen));
 
 	hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
-	//CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Создаётся объект
+	//CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Г‘Г®Г§Г¤Г ВёГІГ±Гї Г®ГЎГєГҐГЄГІ
 	SelectObject(dc, hPen);
 	//Sleep(5000);
 	for (int y = -100; y < 100; y++)
@@ -128,10 +128,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	int wmId, wmEvent;
 	static bool Move = true;
 	static int Phase = 0, Width, Height;
-	HPEN hPen; //Объявляется кисть
+	HPEN hPen; //ГЋГЎГєГїГўГ«ГїГҐГІГ±Гї ГЄГЁГ±ГІГј
 
 
-	switch (message)		 // Обработчик сообщений
+	switch (message)		 // ГЋГЎГ°Г ГЎГ®ГІГ·ГЁГЄ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ©
 	{
 
 
@@ -183,8 +183,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		LineTo(dc, 500, 230);
 		
 		//hPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
-		////CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Создаётся объект
-		//SelectObject(dc, hPen); //Объект делается текущим
+		////CreatePen(PS_SOLID, 1, RGB(0, 128, 256)); //Г‘Г®Г§Г¤Г ВёГІГ±Гї Г®ГЎГєГҐГЄГІ
+		//SelectObject(dc, hPen); //ГЋГЎГєГҐГЄГІ Г¤ГҐГ«Г ГҐГІГ±Гї ГІГҐГЄГіГ№ГЁГ¬
 		Calc(dc, Width, Height, Phase);
 		
 
@@ -223,8 +223,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_DESTROY:
 	{
 		PostQuitMessage(0);
-		break; 			// Завершение программы 
-	default: 			// Обработка сообщения по умолчанию 
+		break; 			// Г‡Г ГўГҐГ°ГёГҐГ­ГЁГҐ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» 
+	default: 			// ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г±Г®Г®ГЎГ№ГҐГ­ГЁГї ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ 
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	}
